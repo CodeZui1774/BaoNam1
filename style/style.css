@@ -1,0 +1,152 @@
+* {
+    padding: 0; 
+    margin: 0; 
+    box-sizing: border-box; 
+}
+
+body{
+    min-height:100vh;
+    background: linear-gradient(135deg,#FFD6E0 0%,#FFF2CC 50%,#FFE5EC 100%);
+    font-family: "Segoe UI",sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    color:#6B2737;
+    text-align:center;
+    overflow:hidden;
+    padding:1rem;
+    position:relative;
+}
+
+h1{ 
+   font-size:2.2rem; 
+   margin-bottom:0.6rem; 
+   z-index:2; }
+
+   #message{ 
+   font-size:1.15rem; 
+   max-width:600px; 
+   opacity:0; 
+   transition:opacity .9s; 
+   z-index:2; 
+}
+
+.falling-img{
+    position:absolute;
+    top:-120px;
+    animation: fall linear forwards;
+    transition: transform .3s, filter .3s;
+    z-index:1;
+    cursor:pointer;
+    user-select:none;
+}
+.falling-img:hover{
+    transform: scale(1.4) rotate(15deg);
+    filter: brightness(1.15);
+    animation-play-state: paused;
+    z-index:3;
+}
+@keyframes fall{
+    0%{ transform: translateY(0) rotate(0deg); opacity:1; }
+    100%{ transform: translateY(150vh) rotate(360deg); opacity:.75; }
+}
+
+.overlay{
+    position:fixed; inset:0;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:20;
+    padding:20px;
+}
+
+.popup{
+    width:70%;
+    max-width:520px;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+    overflow:hidden;
+    position:relative;
+    animation: popupIn .28s ease;
+}
+@keyframes popupIn{ 
+    from{ 
+        transform:scale(.95); 
+        opacity:0 
+    } 
+    to{ 
+        transform:scale(1); 
+        opacity:1 
+    } 
+}
+
+.popup .media{
+    width:100%;
+    display:block;
+    max-height:66vh;
+    object-fit:contain;
+    background:#f8f0f4;
+}
+
+.caption {
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:12px;
+    background: rgba(255, 250, 250, 0.86);
+    color:#6B2737;
+    padding:10px 12px;
+    border-radius:10px;
+    font-size:0.98rem;
+    line-height:1.4;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    text-align:center;
+    backdrop-filter: blur(4px);
+}
+
+.popup .content {
+    padding: 12px;
+    padding-top: 8px;
+    text-align:center;
+}
+
+/* 🔈 Nút âm thanh */
+#soundToggle {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 30;
+    padding: 8px 12px;
+    transition: transform .3s, background .3s;
+    user-select: none;
+}
+#soundToggle:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width:480px){
+    h1{ 
+        font-size:1rem; 
+    }
+    #message{ 
+        font-size:0.85rem; 
+    }
+    .caption{ 
+        font-size:0.9rem; 
+        left:8px; right:8px; 
+        bottom:10px; 
+        padding:8px; 
+    }
+    #soundToggle { 
+        font-size: 1.5rem; 
+        padding: 6px 10px; 
+        bottom: 10px; 
+        right: 12px; 
+    }
+
+}
